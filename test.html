@@ -3,78 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>discord.gg/HNTest</title>
+    <title>Formal Design</title>
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            background: url('https://i.pinimg.com/originals/51/ae/a3/51aea3393b8234a1e69d8713a0a58bc3.gif') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Courier New', Courier, monospace;
-            color: #0000ff;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #f8f8f8;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
-            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        .image-container img {
-            width: 750px; 
-            height: auto;
-            border: 2px solid #0000ff; 
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0, 0, 255, 0.7); 
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(0, 86, 179, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 122, 61, 0.03) 0%, transparent 50%);
+            pointer-events: none;
         }
-        .info {
-            margin-top: 20px;
-            font-size: 1.5em;
-            color: #0000ff; 
-            text-shadow: 0px 0px 8px #0000ff, 0px 0px 15px #0000ff, 0px 0px 25px #0000ff; 
-            letter-spacing: 4.5px; 
-            white-space: pre-wrap;
+
+        .content {
+            max-width: 700px;
+            padding: 50px;
+            position: relative;
+            z-index: 1;
         }
-        .text {
-            margin-top: 20px;
-            font-size: 3em; 
-            color: #0000ff; 
-            text-shadow: 0px 0px 8px #0000ff, 0px 0px 15px #0000ff, 0px 0px 25px #0000ff; 
-            letter-spacing: 4.5px; 
+
+        .header {
+            margin-bottom: 40px;
         }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 8px;
+            font-weight: 300;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .subtitle {
+            font-size: 33px;
+            color: #888;
+            font-weight: 300;
+            letter-spacing: 0.3px;
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 18px;
+            color: #e0e0e0;
+            font-weight: 300;
+        }
+
+        .text-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 13px;
+            opacity: 0.7;
+            color: #999;
+            letter-spacing: 0.5px;
+        }
+
     </style>
 </head>
 <body>
-    <div class="image-container">
-        <img src="https://www.productivecorp.com/wp-content/uploads/2019/01/cost-of-hack.jpg" alt="Discord Image">
+    <div class="content">
+        <div class="header">
+            <div class="subtitle">Instagram: @ 2cpe</div>
+        </div>
+        <div class="text-box">
+            <p>6 <span>1</span>، 1.</p>
+            <p>5 <span>3</span>, 4.</p>
+        </div>
+        <div class="footer">
+            &copy; 2cpe &bull; Kingdom of Saudi Arabia
+        </div>
     </div>
-
-    <!-- Hidden YouTube audio -->
-    <div style="width:0; height:0; overflow:hidden;">
-        <iframe width="0" height="0" 
-            src="https://www.youtube.com/embed/wCD2vbxyEfQ?autoplay=1&loop=1&playlist=wCD2vbxyEfQ" 
-            frameborder="0" allow="autoplay"></iframe>
-    </div>
-
-    <div class="info" id="ip-info">
-        <strong>IP: <span id="ip"></span></strong><br>
-        <span><strong>City:</strong> <span id="city"></span></span><br>
-        <span><strong>Region:</strong> <span id="region"></span></span><br>
-        <span><strong>Country:</strong> <span id="country"></span></span><br>
-        <span><strong>Location:</strong> <span id="loc"></span></span><br>
-        <span><strong>Organization:</strong> <span id="org"></span></span><br>
-        <span><strong>Timezone:</strong> <span id="timezone"></span></span>
-    </div>
-
-    <div class="text">discord.gg/HNTest</div>
-
-    <script>
-        fetch('https://ipinfo.io/json')
-        .then(response => response.json())
-        .then(data => {
-            delete data.readme;
-            const infoDiv = document.getElementById('ip-info');
-            infoDiv.textContent = JSON.stringify(data, null, 2);
-        });
-    </script>
 </body>
-</html>
+</html> 

